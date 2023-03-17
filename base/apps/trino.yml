@@ -1,0 +1,10 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: trino
+  namespace: argocd
+spec:
+  source:
+    repoURL: 'https://aggregion.github.io/helm-charts-cdp/charts'
+    targetRevision: '>0.1.0'
+    chart: trino

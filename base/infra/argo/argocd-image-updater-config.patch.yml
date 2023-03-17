@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-image-updater-config
+data:
+  log.level: info # trace, debug, info, warn or error.
+  # https://argocd-image-updater.readthedocs.io/en/latest/configuration/registries/
+  registries.conf: |
+    registries:
+    - name: Aggregion Docker Container Registry
+      prefix: registry.aggregion.com
+      api_url: https://registry.aggregion.com
+      ping: no
+      credentials: pullsecret:argocd/argocd-image-updater-aggregion-registry-secret
+#    - name: GitHub Container Registry
+#      prefix: ghcr.io
+#      api_url: https://ghcr.io
+#      ping: no
+#      credentials: pullsecret:argocd/argocd-image-updater-ghcr-secret

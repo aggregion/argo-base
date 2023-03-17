@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cdp
+  namespace: argocd
+  annotations:
+    # https://argocd-image-updater.readthedocs.io/en/v0.7.0/configuration/images/
+    argocd-image-updater.argoproj.io/image-list: as=registry.aggregion.com/auth-service,dmp=registry.aggregion.com/dmp-backend,gk=registry.aggregion.com/gatekeeper,es=registry.aggregion.com/email-service
+    argocd-image-updater.argoproj.io/write-back-method: argocd
+    argocd-image-updater.argoproj.io/as.update-strategy: newest-build
+    argocd-image-updater.argoproj.io/as.allow-tags: regexp:^dcp-master-.*$
+    argocd-image-updater.argoproj.io/as.helm.image-name: dataservice.imageApi.repository
+    argocd-image-updater.argoproj.io/as.helm.image-tag: dataservice.imageApi.tag
+    argocd-image-updater.argoproj.io/dmp.update-strategy: newest-build
+    argocd-image-updater.argoproj.io/dmp.allow-tags: regexp:^feature-DMPD-918-story-.*$
+    argocd-image-updater.argoproj.io/dmp.helm.image-name: backend.image.repository
+    argocd-image-updater.argoproj.io/dmp.helm.image-tag: backend.image.tag
+  # if ArgoProject is deleted, delete the child resources (controlled by it project)
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  source:
+    path: charts/aggregion-cdp
+    repoURL: 'git@github.com:aggregion/helm-charts-cdp.git'
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false
+    syncOptions:
+      - CreateNamespace=true
+      - Replace=true
+      - PruneLast=true

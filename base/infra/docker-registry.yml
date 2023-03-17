@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: docker-registry
+  namespace: argocd
+spec:
+  project: infra
+  source:
+    path: ''
+    repoURL: 'https://helm.twun.io'
+    targetRevision: 2.2.2
+    chart: docker-registry
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: false
+    syncOptions:
+      - PruneLast=true

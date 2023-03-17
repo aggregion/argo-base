@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mailhog
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: infra
+  source:
+    repoURL: 'https://codecentric.github.io/helm-charts'
+    targetRevision: 5.2.1
+    chart: mailhog
+  destination:
+    namespace: mailhog
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+      - Replace=true
+      - PruneLast=true

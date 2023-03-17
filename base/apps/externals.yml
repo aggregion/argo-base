@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: externals
+  namespace: argocd
+spec:
+  source:
+    repoURL: 'https://aggregion.github.io/helm-charts-cdp/charts'
+    targetRevision: '>0.1.0'
+    chart: aggregion-externals
+    helm:
+      values: |-
+        mongo:
+          enabled: true
+          storageSize: 4Gi
+        redis:
+          enabled: true
+          storageSize: 1Gi
+        rabbit:
+          enabled: true
+          storageSize: 1Gi
+        clickhouse:
+          enabled: false
+          storageSize: 32Gi
+        postgres:
+          enabled: false
+          storageSize: "6G"

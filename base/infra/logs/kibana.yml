@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kibana-argo
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: infra
+  source:
+    repoURL: 'https://aggregion.github.io/helm-charts-cdp/charts'
+    targetRevision: 7.17.3
+    chart: kibana
+  destination:
+    namespace: logs
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+      - Replace=true
+      - PruneLast=true

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-notifications-cm
+data:
+  service.slack: |
+    token: $slack-token
+    username: argocd
+  service.teams: |
+    recipientUrls: 
+      channelName: $channel-teams-url
+  service.telegram: |
+    token: $telegram-token

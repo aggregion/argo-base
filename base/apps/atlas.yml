@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: atlas
+  namespace: argocd
+spec:
+  source:
+    repoURL: 'https://aggregion.github.io/helm-charts-cdp/charts'
+    targetRevision: '>0.1.0'
+    chart: atlas
+    helm:
+      values: |-
+        atlas:
+          nodeSelector:
+            apache-atlas: allow
+        cassandra:
+          nodeSelector:
+            apache-atlas: allow
+          storageSize: "5Gi"
+        kafka:
+          storageSize: "1Gi"
+        solr:
+          storageSize: "1Gi"

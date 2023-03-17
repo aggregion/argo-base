@@ -1,0 +1,41 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - https://raw.githubusercontent.com/argoproj-labs/argocd-notifications/v1.2.1/manifests/install.yaml
+  - https://raw.githubusercontent.com/argoproj-labs/argocd-image-updater/stable/manifests/install.yaml
+  - argocd-server-ingress.yaml
+#  - sealedsecret.argocd-image-updater-aggregion-registry-secret.yaml
+#  - sealedsecret.argocd-image-updater.ghcr-secret.yaml
+
+patchesStrategicMerge:
+  - https://raw.githubusercontent.com/argoproj-labs/argocd-notifications/v1.2.1/catalog/install.yaml
+  - argocd-image-updater-config.patch.yml
+  - argocd-notifications-cm.patch.yml
+
+patches:
+  # put all resources of argocd-notifications to argocd namespace
+  - target:
+      name: argocd-notifications-.*
+    patch: |-
+      - op: add
+        path: /metadata/namespace
+        value: argocd
+  # put all resources of argocd-image-updater to argocd namespace
+  - target:
+      labelSelector: app.kubernetes.io/part-of=argocd-image-updater
+    patch: |-
+      - op: add
+        path: /metadata/namespace
+        value: argocd
+  # fix issue in 0.12, use latest image tag
+  # https://github.com/argoproj-labs/argocd-image-updater/issues/412
+  - target:
+      kind: Deployment
+      group: apps
+      version: v1
+      name: argocd-image-updater
+    patch: |-
+      - op: replace
+        path: /spec/template/spec/containers/0/image
+        value: quay.io/argoprojlabs/argocd-image-updater:latest
