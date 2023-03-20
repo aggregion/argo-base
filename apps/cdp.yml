@@ -22,7 +22,7 @@ spec:
   source:
     repoURL: 'https://aggregion.github.io/helm-charts-cdp/charts'
     chart: aggregion-cdp
-    targetRevision: '>0.1.361'
+    targetRevision: '>=0.1.361'
   syncPolicy:
     automated:
       prune: false
