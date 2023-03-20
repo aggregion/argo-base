@@ -5,7 +5,7 @@ metadata:
   namespace: argocd
   annotations:
     # https://argocd-image-updater.readthedocs.io/en/v0.7.0/configuration/images/
-    argocd-image-updater.argoproj.io/image-list: as=registry.aggregion.com/auth-service,dmp=registry.aggregion.com/dmp-backend,gk=registry.aggregion.com/gatekeeper,es=registry.aggregion.com/email-service,ds=registry.aggregion.com/dataservice,oidcp=registry.aggregion.com/oidc-provider,dbmdsync=registry.aggregion.com/db-metadata-sync,dbmdsvc=registry.aggregion.com/metadata-service
+    argocd-image-updater.argoproj.io/image-list: as=registry.aggregion.com/auth-service,dmp=registry.aggregion.com/dmp-backend,gk=registry.aggregion.com/gatekeeper,es=registry.aggregion.com/email-service,ds=registry.aggregion.com/dataservice,oidcp=registry.aggregion.com/oidc-provider,dbmdsync=registry.aggregion.com/db-metadata-sync,dbmdsvc=registry.aggregion.com/metadata-service,encsrv=registry.aggregion.com/enclave-server-nodejs,front=registry.aggregion.com/dmp-frontend
     argocd-image-updater.argoproj.io/write-back-method: argocd
     argocd-image-updater.argoproj.io/as.update-strategy: newest-build
     argocd-image-updater.argoproj.io/as.allow-tags: regexp:^dcp-master-.*$
@@ -38,6 +38,14 @@ metadata:
     argocd-image-updater.argoproj.io/es.allow-tags: regexp:^dcp-master-.*$
     argocd-image-updater.argoproj.io/es.helm.image-name: emailservice.image.repository
     argocd-image-updater.argoproj.io/es.helm.image-tag: emailservice.image.tag
+    argocd-image-updater.argoproj.io/encsrv.update-strategy: newest-build
+    argocd-image-updater.argoproj.io/encsrv.allow-tags: regexp:^main_.*$
+    argocd-image-updater.argoproj.io/encsrv.helm.image-name: enclave.imageServer.repository
+    argocd-image-updater.argoproj.io/encsrv.helm.image-tag: enclave.imageServer.tag
+    argocd-image-updater.argoproj.io/front.update-strategy: newest-build
+    argocd-image-updater.argoproj.io/front.allow-tags: regexp:^feature-DCP-2607-story.*$
+    argocd-image-updater.argoproj.io/front.helm.image-name: frontend.image.repository
+    argocd-image-updater.argoproj.io/front.helm.image-tag: frontend.image.tag
   # if ArgoProject is deleted, delete the child resources (controlled by it project)
   finalizers:
     - resources-finalizer.argocd.argoproj.io
