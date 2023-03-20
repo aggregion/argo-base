@@ -20,6 +20,7 @@ metadata:
     argocd-image-updater.argoproj.io/ds.helm.image-name: dataservice.imageApi.repository
     argocd-image-updater.argoproj.io/ds.helm.image-tag: dataservice.imageApi.tag
     argocd-image-updater.argoproj.io/gk.update-strategy: newest-build
+    argocd-image-updater.argoproj.io/gk.allow-tags: '1.4.2'
     argocd-image-updater.argoproj.io/gk.helm.image-name: gatekeeper.image.repository
     argocd-image-updater.argoproj.io/gk.helm.image-tag: gatekeeper.image.tag
     argocd-image-updater.argoproj.io/oidcp.update-strategy: newest-build
