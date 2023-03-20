@@ -15,6 +15,7 @@ metadata:
     argocd-image-updater.argoproj.io/dmp.allow-tags: regexp:^feature-DMPD-918-story-.*$
     argocd-image-updater.argoproj.io/dmp.helm.image-name: backend.image.repository
     argocd-image-updater.argoproj.io/dmp.helm.image-tag: backend.image.tag
+    argocd-image-updater.argoproj.io/ds.update-strategy: newest-build
     argocd-image-updater.argoproj.io/ds.allow-tags: regexp:^dcp-master-.*$
     argocd-image-updater.argoproj.io/ds.helm.image-name: dataservice.image.repository
     argocd-image-updater.argoproj.io/ds.helm.image-tag: dataservice.image.tag
