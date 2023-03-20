@@ -5,7 +5,7 @@ metadata:
   namespace: argocd
   annotations:
     # https://argocd-image-updater.readthedocs.io/en/v0.7.0/configuration/images/
-    argocd-image-updater.argoproj.io/image-list: as=registry.aggregion.com/auth-service,dmp=registry.aggregion.com/dmp-backend,gk=registry.aggregion.com/gatekeeper,es=registry.aggregion.com/email-service,ds=registry.aggregion.com/dataservice
+    argocd-image-updater.argoproj.io/image-list: as=registry.aggregion.com/auth-service,dmp=registry.aggregion.com/dmp-backend,gk=registry.aggregion.com/gatekeeper,es=registry.aggregion.com/email-service,ds=registry.aggregion.com/dataservice,oidcp=registry.aggregion.com/oidc-provider,dbmdsync=registry.aggregion.com/db-metadata-sync,dbmdsvc=registry.aggregion.com/metadata-service
     argocd-image-updater.argoproj.io/write-back-method: argocd
     argocd-image-updater.argoproj.io/as.update-strategy: newest-build
     argocd-image-updater.argoproj.io/as.allow-tags: regexp:^dcp-master-.*$
@@ -22,6 +22,22 @@ metadata:
     argocd-image-updater.argoproj.io/gk.update-strategy: newest-build
     argocd-image-updater.argoproj.io/gk.helm.image-name: gatekeeper.image.repository
     argocd-image-updater.argoproj.io/gk.helm.image-tag: gatekeeper.image.tag
+    argocd-image-updater.argoproj.io/oidcp.update-strategy: newest-build
+    argocd-image-updater.argoproj.io/oidcp.allow-tags: regexp:^dcp-master-.*$
+    argocd-image-updater.argoproj.io/oidcp.helm.image-name: oidcprovider.image.repository
+    argocd-image-updater.argoproj.io/oidcp.helm.image-tag: oidcprovider.image.tag
+    argocd-image-updater.argoproj.io/dbmdsync.update-strategy: newest-build
+    argocd-image-updater.argoproj.io/dbmdsync.allow-tags: regexp:^refs-pull-72-merge-.*$
+    argocd-image-updater.argoproj.io/dbmdsync.helm.image-name: dbMetadataSync.image.repository
+    argocd-image-updater.argoproj.io/dbmdsync.helm.image-tag: dbMetadataSync.image.tag
+    argocd-image-updater.argoproj.io/dbmdsvc.update-strategy: newest-build
+    argocd-image-updater.argoproj.io/dbmdsvc.allow-tags: regexp:^refs-pull-72-merge-.*$
+    argocd-image-updater.argoproj.io/dbmdsvc.helm.image-name: metadataService.image.repository
+    argocd-image-updater.argoproj.io/dbmdsvc.helm.image-tag: metadataService.image.tag
+    argocd-image-updater.argoproj.io/es.update-strategy: newest-build
+    argocd-image-updater.argoproj.io/es.allow-tags: regexp:^dcp-master-.*$
+    argocd-image-updater.argoproj.io/es.helm.image-name: emailservice.image.repository
+    argocd-image-updater.argoproj.io/es.helm.image-tag: emailservice.image.tag
   # if ArgoProject is deleted, delete the child resources (controlled by it project)
   finalizers:
     - resources-finalizer.argocd.argoproj.io
