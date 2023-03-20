@@ -20,9 +20,9 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   source:
-    path: charts/aggregion-cdp
-    repoURL: 'git@github.com:aggregion/helm-charts-cdp.git'
-    targetRevision: HEAD
+    repoURL: 'https://aggregion.github.io/helm-charts-cdp/charts'
+    chart: aggregion-cdp
+    targetRevision: '>0.1.361'
   syncPolicy:
     automated:
       prune: false
