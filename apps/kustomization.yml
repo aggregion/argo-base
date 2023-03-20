@@ -22,4 +22,4 @@ resources:
   - externals.yml
   - atlas.yml
   - trino.yml
-  - cdp.ymy
+  - cdp.yml
