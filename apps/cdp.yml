@@ -9,8 +9,8 @@ metadata:
     argocd-image-updater.argoproj.io/write-back-method: argocd
     argocd-image-updater.argoproj.io/as.update-strategy: newest-build
     argocd-image-updater.argoproj.io/as.allow-tags: regexp:^dcp-master-.*$
-    argocd-image-updater.argoproj.io/as.helm.image-name: dataservice.imageApi.repository
-    argocd-image-updater.argoproj.io/as.helm.image-tag: dataservice.imageApi.tag
+    argocd-image-updater.argoproj.io/as.helm.image-name: authservice.imageApi.repository
+    argocd-image-updater.argoproj.io/as.helm.image-tag: authservice.imageApi.tag
     argocd-image-updater.argoproj.io/dmp.update-strategy: newest-build
     argocd-image-updater.argoproj.io/dmp.allow-tags: regexp:^feature-DMPD-918-story-.*$
     argocd-image-updater.argoproj.io/dmp.helm.image-name: backend.image.repository
