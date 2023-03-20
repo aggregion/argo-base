@@ -17,9 +17,9 @@ commonAnnotations:
   notifications.argoproj.io/subscribe.on-health-missing.telegram: "-1001670811492"
 
 resources:
-  - atlas.yml
-  - cdp.yml
-  - externals.yml
-  - keycloak.yml
-  - trino.yml
   - project.yml
+  - keycloak.yml
+  - externals.yml
+  - atlas.yml
+  - trino.yml
+  - cdp.ymy
