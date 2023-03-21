@@ -24,3 +24,4 @@ resources:
   - trino.yml
   - cdp.yml
   - pipelines.yml
+  - pipeline-services.yml
