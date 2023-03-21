@@ -1,0 +1,10 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: pipelines
+  namespace: argocd
+spec:
+  source:
+    repoURL: 'https://github.com/aggregion/helm-charts-cdp.git'
+    path: charts/tekton/helm/aggregion
+    targetRevision: 'HEAD'
