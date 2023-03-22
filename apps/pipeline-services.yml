@@ -8,3 +8,9 @@ spec:
     repoURL: 'https://github.com/aggregion/helm-charts-cdp.git'
     path: charts/pipeline
     targetRevision: 'HEAD'
+    helm:
+      parameters:
+        - name: 'runner.configs.basePipelineOptions.annotations.argocd\.argoproj\.io/sync-wave'
+          value: ignore
+        - name: 'runner.configs.basePipelineOptions.annotations.argocd\.argoproj\.io/sync-options'
+          value: Prune=false
