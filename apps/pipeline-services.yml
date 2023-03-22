@@ -10,6 +10,10 @@ spec:
     targetRevision: 'HEAD'
     helm:
       parameters:
+        - name: runner.image.tag
+          value: master-bcacd96f-96
+        - name: stopper.image.tag
+          value: b1f9c8f8
         - name: 'runner.configs.basePipelineOptions.annotations.argocd\.argoproj\.io/sync-wave'
           value: ignore
         - name: 'runner.configs.basePipelineOptions.annotations.argocd\.argoproj\.io/sync-options'
