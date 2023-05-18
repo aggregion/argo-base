@@ -10,12 +10,7 @@ spec:
     chart: atlas
     helm:
       values: |-
-        atlas:
-          nodeSelector:
-            apache-atlas: allow
         cassandra:
-          nodeSelector:
-            apache-atlas: allow
           storageSize: "5Gi"
         kafka:
           storageSize: "1Gi"
