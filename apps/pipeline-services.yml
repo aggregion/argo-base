@@ -3,6 +3,22 @@ kind: Application
 metadata:
   name: pipeline-services
   namespace: argocd
+  annotations:
+    # https://argocd-image-updater.readthedocs.io/en/v0.7.0/configuration/images/
+    argocd-image-updater.argoproj.io/image-list: pr=registry.aggregion.com/pipeline-runner,ps=registry.aggregion.com/pipeline-stopper,pw=registry.aggregion.com/pipeline-watcher
+    argocd-image-updater.argoproj.io/write-back-method: argocd
+    argocd-image-updater.argoproj.io/pr.update-strategy: newest-build
+    argocd-image-updater.argoproj.io/pr.allow-tags: regexp:^master-.*$
+    argocd-image-updater.argoproj.io/pr.helm.image-name: runner.image.repository
+    argocd-image-updater.argoproj.io/pr.helm.image-tag: runner.image.tag
+    argocd-image-updater.argoproj.io/ps.update-strategy: newest-build
+    argocd-image-updater.argoproj.io/ps.allow-tags: regexp:^master-.*$
+    argocd-image-updater.argoproj.io/ps.helm.image-name: stopper.image.repository
+    argocd-image-updater.argoproj.io/ps.helm.image-tag: stopper.image.tag
+    argocd-image-updater.argoproj.io/pw.update-strategy: newest-build
+    argocd-image-updater.argoproj.io/pw.allow-tags: regexp:^master-.*$
+    argocd-image-updater.argoproj.io/pw.helm.image-name: watcher.image.repository
+    argocd-image-updater.argoproj.io/pw.helm.image-tag: watcher.image.tag
 spec:
   source:
     repoURL: 'https://github.com/aggregion/helm-charts-cdp.git'
