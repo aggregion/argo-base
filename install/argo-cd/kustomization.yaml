@@ -3,9 +3,5 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-images:
-- name: quay.io/argoproj/argocd
-  newName: quay.io/argoproj/argocd
-  newTag: latest
 resources:
 - ./cluster-install
