@@ -4,6 +4,10 @@ metadata:
   name: pipelines
   namespace: argocd
 spec:
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false
   source:
     repoURL: 'https://github.com/aggregion/helm-charts-cdp.git'
     path: charts/tekton/helm/aggregion

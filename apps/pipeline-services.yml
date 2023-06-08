@@ -20,6 +20,10 @@ metadata:
     argocd-image-updater.argoproj.io/pw.helm.image-name: watcher.image.repository
     argocd-image-updater.argoproj.io/pw.helm.image-tag: watcher.image.tag
 spec:
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false
   source:
     repoURL: 'https://github.com/aggregion/helm-charts-cdp.git'
     path: charts/pipeline
