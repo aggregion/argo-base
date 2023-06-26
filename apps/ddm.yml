@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ddm
+  namespace: argocd
+spec:
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false
+  source:
+    repoURL: 'https://aggregion.github.io/helm-charts-cdp/charts'
+    targetRevision: '>=0.1.0'
+    chart: ddm

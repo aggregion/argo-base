@@ -25,3 +25,4 @@ resources:
   - cdp.yml
   - pipelines.yml
   - pipeline-services.yml
+  - ddm.yml
