@@ -29,12 +29,3 @@ spec:
         postgres:
           enabled: false
           storageSize: "6G"
-          initScripts:
-            enabled: false
-            services:
-              metadataservice:
-                enabled: false
-                database: metadata
-              dc:
-                enabled: false
-                database: dc
