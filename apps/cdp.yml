@@ -5,8 +5,12 @@ metadata:
   namespace: argocd
   annotations:
     # https://argocd-image-updater.readthedocs.io/en/v0.7.0/configuration/images/
-    argocd-image-updater.argoproj.io/image-list: as=registry.aggregion.com/auth-service,dmp=registry.aggregion.com/dmp-backend,gk=registry.aggregion.com/gatekeeper,es=registry.aggregion.com/email-service,ds=registry.aggregion.com/dataservice,oidcp=registry.aggregion.com/oidc-provider,dbmdsync=registry.aggregion.com/db-metadata-sync,dbmdsvc=registry.aggregion.com/metadata-service,encsrv=registry.aggregion.com/enclave-server-nodejs,front=registry.aggregion.com/dmp-frontend
+    argocd-image-updater.argoproj.io/image-list: adc=registry.aggregion.com/audience-dataset-consumer,as=registry.aggregion.com/auth-service,dmp=registry.aggregion.com/dmp-backend,gk=registry.aggregion.com/gatekeeper,es=registry.aggregion.com/email-service,ds=registry.aggregion.com/dataservice,oidcp=registry.aggregion.com/oidc-provider,dbmdsc=registry.aggregion.com/db-metadata-sync-consumer,dbmdsync=registry.aggregion.com/db-metadata-sync,ddmec=registry.aggregion.com/ddm-event-consumer,mdsvc=registry.aggregion.com/metadata-service,encsrv=registry.aggregion.com/enclave-server-nodejs,front=registry.aggregion.com/dmp-frontend
     argocd-image-updater.argoproj.io/write-back-method: argocd
+    argocd-image-updater.argoproj.io/adc.update-strategy: newest-build
+    argocd-image-updater.argoproj.io/adc.allow-tags: regexp:^refs-pull-72-merge-.*$
+    argocd-image-updater.argoproj.io/adc.helm.image-name: audienceDatasetConsumer.image.repository
+    argocd-image-updater.argoproj.io/adc.helm.image-tag: audienceDatasetConsumer.image.tag
     argocd-image-updater.argoproj.io/as.update-strategy: newest-build
     argocd-image-updater.argoproj.io/as.allow-tags: regexp:^dcp-master-.*$
     argocd-image-updater.argoproj.io/as.helm.image-name: authservice.image.repository
@@ -27,14 +31,22 @@ metadata:
     argocd-image-updater.argoproj.io/oidcp.allow-tags: regexp:^dcp-master-.*$
     argocd-image-updater.argoproj.io/oidcp.helm.image-name: oidcprovider.image.repository
     argocd-image-updater.argoproj.io/oidcp.helm.image-tag: oidcprovider.image.tag
+    argocd-image-updater.argoproj.io/dbmdsc.update-strategy: newest-build
+    argocd-image-updater.argoproj.io/dbmdsc.allow-tags: regexp:^refs-pull-72-merge-.*$
+    argocd-image-updater.argoproj.io/dbmdsc.helm.image-name: dbMetadataSyncConsumer.image.repository
+    argocd-image-updater.argoproj.io/dbmdsc.helm.image-tag: dbMetadataSyncConsumer.image.tag
     argocd-image-updater.argoproj.io/dbmdsync.update-strategy: newest-build
     argocd-image-updater.argoproj.io/dbmdsync.allow-tags: regexp:^refs-pull-72-merge-.*$
     argocd-image-updater.argoproj.io/dbmdsync.helm.image-name: dbMetadataSync.image.repository
     argocd-image-updater.argoproj.io/dbmdsync.helm.image-tag: dbMetadataSync.image.tag
-    argocd-image-updater.argoproj.io/dbmdsvc.update-strategy: newest-build
-    argocd-image-updater.argoproj.io/dbmdsvc.allow-tags: regexp:^refs-pull-72-merge-.*$
-    argocd-image-updater.argoproj.io/dbmdsvc.helm.image-name: metadataService.image.repository
-    argocd-image-updater.argoproj.io/dbmdsvc.helm.image-tag: metadataService.image.tag
+    argocd-image-updater.argoproj.io/ddmec.update-strategy: newest-build
+    argocd-image-updater.argoproj.io/ddmec.allow-tags: regexp:^refs-pull-72-merge-.*$
+    argocd-image-updater.argoproj.io/ddmec.helm.image-name: ddmEventConsumer.image.repository
+    argocd-image-updater.argoproj.io/ddmec.helm.image-tag: ddmEventConsumer.image.tag
+    argocd-image-updater.argoproj.io/mdsvc.update-strategy: newest-build
+    argocd-image-updater.argoproj.io/mdsvc.allow-tags: regexp:^refs-pull-72-merge-.*$
+    argocd-image-updater.argoproj.io/mdsvc.helm.image-name: metadataService.image.repository
+    argocd-image-updater.argoproj.io/mdsvc.helm.image-tag: metadataService.image.tag
     argocd-image-updater.argoproj.io/es.update-strategy: newest-build
     argocd-image-updater.argoproj.io/es.allow-tags: regexp:^dcp-master-.*$
     argocd-image-updater.argoproj.io/es.helm.image-name: emailservice.image.repository
