@@ -25,9 +25,9 @@ spec:
       prune: false
       selfHeal: false
   source:
-    repoURL: 'https://github.com/aggregion/helm-charts-cdp.git'
-    path: charts/pipeline
-    targetRevision: 'HEAD'
+    repoURL: 'https://aggregion.github.io/helm-charts-cdp/charts'
+    chart: pipeline
+    targetRevision: '>=0.0.4'
     helm:
       parameters:
         - name: runner.image.tag
