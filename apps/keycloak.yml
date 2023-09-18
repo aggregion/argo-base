@@ -17,7 +17,7 @@ spec:
           enabled: true
         image:
           repository: keycloak
-          tag: dcp-master-e32f1b74-10
+          tag: dcp-master-86d09118-24
         auth:
           adminUser: admin
         extraEnvVars:
@@ -26,7 +26,7 @@ spec:
           - name: KEYCLOAK_LOG_OUTPUT
             value: "json"
           - name: KEYCLOAK_EXTRA_ARGS
-            value: "--spi-login-protocol-openid-connect-legacy-logout-redirect-uri=true --log-level=INFO,org.keycloak.events:debug"
+            value: "--spi-login-protocol-openid-connect-legacy-logout-redirect-uri=true --log-level=INFO,org.keycloak.events:debug,freemarker.runtime:fatal,org.keycloak.events.jpa.JpaEventStoreProvider:info"
         postgresql:
           primary:
             persistence:
