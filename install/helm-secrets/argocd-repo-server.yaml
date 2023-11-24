@@ -111,7 +111,7 @@
   path: /spec/template/spec/initContainers/-
   value:
     name: download-tools
-    image: alpine:latestregistry.aggregion.com/helm-secrets-argocd:0.0.1
+    image: registry.aggregion.com/helm-secrets-argocd:0.0.1
     imagePullPolicy: IfNotPresent
     command: [sh, -ec]
     env:
