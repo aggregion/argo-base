@@ -10,7 +10,7 @@ spec:
     targetRevision: "master"
     path: bitnami/mongodb
     helm:
-      values: |
+      values: |-
         global:
           imageRegistry: registry.aggregion.com
         architecture: replicaset
