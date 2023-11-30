@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: ssh://git@github.com/aggregion/helm-charts-cdp.git
     targetRevision: "master"
-    path: bitnami/postgres-ha
+    path: bitnami/postgresql-ha
     helm:
       values: |-
         global:
