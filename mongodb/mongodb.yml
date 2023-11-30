@@ -10,27 +10,29 @@ spec:
     targetRevision: "master"
     path: bitnami/mongodb
     helm:
-      parameters:
-      - name: global.imageRegistry
-        value: "registry.aggregion.com"
-      - name: architecture
-        value: "replicaset"
-      - name: replicaCount
-        value: "3"
-      - name: persistence.size
-        value: "20Gi"
-      - name: containerSecurityContext.enabled
-        value: "false"
-      - name: arbiter.containerSecurityContext.enabled
-        value: "false"
-      - name: auth.rootPassword
-        value: "needtochange"
-      - name: auth.usernames
-        value: "[user]"
-      - name: auth.passwords
-        value: "[needtochange]"
-      - name: auth.databases
-        value: "[dmp, ds, auth, mds]"
+      values: |-
+        global:
+          imageRegistry: registry.aggregion.com
+        architecture: replicaset
+        replicaCount: 3
+        persistence:
+          size: 20Gi
+        containerSecurityContext:
+          enabled: false
+        arbiter:
+          containerSecurityContext:
+            enabled: false
+        auth:
+          rootPassword: needtochange
+          usernames:
+          - user
+          passwords:
+          - needtochange
+          databases:
+          - dmp
+          - ds
+          - auth
+          - mds
   syncPolicy:
     automated:
       prune: false
