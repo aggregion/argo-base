@@ -19,6 +19,8 @@ spec:
         value: "3"
       - name: persistence.size
         value: "20Gi"
+      - name: containerSecurityContext.enabled
+        value: "false"
   syncPolicy:
     automated:
       prune: false
