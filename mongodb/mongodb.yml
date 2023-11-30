@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mongodb
+  namespace: argocd
+spec:
+  project: mongodb
+  source:
+    repoURL: ssh://git@github.com/aggregion/helm-charts-cdp.git
+    targetRevision: "master"
+    path: bitnami/mongodb
+    helm:
+      parameters:
+      - name: global.imageRegistry
+        value: "registry.aggregion.com"
+      - name: architecture
+        value: "replicaset"
+      - name: replicaCount
+        value: "3"
+      - name: persistence.size
+        value: "20Gi"
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false
+    syncOptions:
+    - CreateNamespace=true
