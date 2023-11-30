@@ -1,0 +1,35 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: bnmongodb
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: ssh://git@github.com/aggregion/helm-charts-cdp.git
+    targetRevision: "master"
+    path: bitnami/postgres-ha
+    helm:
+      values: |-
+        global:
+          imageRegistry: registry.aggregion.com
+          postgresql:
+            repmgrUsername: repmgr
+            repmgrPassword: repmgr-password
+          pgpool:
+            adminUsername: pgpool
+            adminPassword: pgpool-password
+        replicaCount: 3
+        persistence:
+          size: 20Gi
+        containerSecurityContext:
+          enabled: false
+        postgresql:
+          password: pg-password
+          postgresPassword: pg-pg-password
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false
+    syncOptions:
+    - CreateNamespace=true
