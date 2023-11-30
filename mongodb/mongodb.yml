@@ -21,6 +21,8 @@ spec:
         value: "20Gi"
       - name: containerSecurityContext.enabled
         value: "false"
+      - name: arbiter.containerSecurityContext.enabled
+        value: "false"
   syncPolicy:
     automated:
       prune: false
