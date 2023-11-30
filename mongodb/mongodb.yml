@@ -23,6 +23,14 @@ spec:
         value: "false"
       - name: arbiter.containerSecurityContext.enabled
         value: "false"
+      - name: auth.rootPassword
+        value: "needtochange"
+      - name: auth.usernames
+        value: "[user]"
+      - name: auth.passwords
+        value: "[needtochange]"
+      - name: auth.databases
+        value: "[dmp, ds, auth, mds]"
   syncPolicy:
     automated:
       prune: false
