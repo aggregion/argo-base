@@ -24,6 +24,7 @@ spec:
             enabled: false
         auth:
           rootPassword: needtochange
+          replicaSetKey: rskey
           usernames:
           - dmpuser
           - dsuser
