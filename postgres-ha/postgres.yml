@@ -22,11 +22,11 @@ spec:
         replicaCount: 3
         persistence:
           size: 20Gi
-        containerSecurityContext:
-          enabled: false
         postgresql:
           password: pg-password
           postgresPassword: pg-pg-password
+          containerSecurityContext:
+            enabled: false
   syncPolicy:
     automated:
       prune: false
