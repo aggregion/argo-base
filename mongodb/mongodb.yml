@@ -1,10 +1,10 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: mongodb
+  name: bnmongodb
   namespace: argocd
 spec:
-  project: mongodb
+  project: default
   source:
     repoURL: ssh://git@github.com/aggregion/helm-charts-cdp.git
     targetRevision: "master"
