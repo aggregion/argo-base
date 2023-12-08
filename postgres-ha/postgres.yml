@@ -27,6 +27,9 @@ spec:
           postgresPassword: pg-pg-password
           containerSecurityContext:
             enabled: false
+        pgpool:
+          containerSecurityContext:
+            enabled: false
   syncPolicy:
     automated:
       prune: false
