@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx-lb
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: ssh://git@github.com/aggregion/helm-charts-cdp.git
+    targetRevision: "master"
+    path: charts/nginx-load-balancer
+    helm:
+      values: |-
+        image:
+          repository: registry.aggregion.com/nginx
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false
+    syncOptions:
+    - CreateNamespace=true
