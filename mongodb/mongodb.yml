@@ -25,21 +25,21 @@ spec:
         auth:
           rootPassword: needtochange
           replicaSetKey: rskey
-          usernames:
-          - dmpuser
-          - dsuser
-          - authuser
-          - mdsuser
-          passwords:
-          - needtochange
-          - needtochange
-          - needtochange
-          - needtochange
-          databases:
-          - dmp
-          - ds
-          - auth
-          - mds
+          usernames: []
+          # - dmpuser
+          # - dsuser
+          # - authuser
+          # - mdsuser
+          passwords: []
+          # - needtochange
+          # - needtochange
+          # - needtochange
+          # - needtochange
+          databases: []
+          # - dmp
+          # - ds
+          # - auth
+          # - mds
   syncPolicy:
     automated:
       prune: false
