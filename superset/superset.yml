@@ -15,6 +15,11 @@ spec:
           repository: harbor.aggregion.com/apachesuperset/apache/superset
         initImage:
           repository: harbor.aggregion.com/hub/apache/superset
+        postgresql:
+          postgresqlPassword: superset
+        configOverrides:
+          secret: |
+            SECRET_KEY = 'wzmiM7D8jSo3QJ/9mcSds07lpN3MeY2RNvOuB6+RbwSw47u2EZpsq0pb'
   syncPolicy:
     automated:
       prune: false
